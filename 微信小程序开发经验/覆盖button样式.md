@@ -2,5 +2,5 @@
 ```css
 /* 去边框 */
 button { border: none }
-button::after { border: none }
+button::after { display: none }
 ```
