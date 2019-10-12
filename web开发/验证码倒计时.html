@@ -44,17 +44,18 @@
         localStorage.removeItem('getVfcodeDate');
         clearTimeout(_timer);
       } else {
+        _timeRemaining = num - difTime;
+        _num.innerHTML = _timeRemaining;
         if (!_btn.classList.contains('disabled')) {
           _btn.classList.add('disabled')
         }
-        _timeRemaining = num - difTime;
-        _num.innerHTML = _timeRemaining;
         _timer = setTimeout(() => {
           countDown(num);
         }, 1000)
       }
     };
 
+    // 启动倒计时
     countDown(10);
     _btn.addEventListener('click', function () {
       if (_btn.classList.contains('disabled')) return
