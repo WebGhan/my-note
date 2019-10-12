@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>验证码倒计时</title>
+  <style>
+    #btn { width: 200px; height: 50px; line-height: 50px; text-align: center; color: #fff; background: #409EFF; cursor: pointer; }
+    #btn .sp2 { display: none; }
+    #btn.disabled { color: #333; background: #eee; }
+    #btn.disabled .sp1 { display: none; }
+    #btn.disabled .sp2 { display: inline; }
+  </style>
+</head>
+<body>
+  <div id="btn">
+    <span class="sp1">点我倒计时</span>
+    <span class="sp2" id="num">10</span><span class="sp2">s后再试</span>
+  </div>
+
+  <script>
+    var _btn = document.getElementById('btn');
+    var _num = document.getElementById('num');
+    var _timer = null; // 定时器
+    var _timeRemaining = null; // 剩余时间
+
+    // 开始倒计时
+    function startCountDown(num) {
+      localStorage.setItem('getVfcodeDate', Date.now())
+      countDown(num);
+    }
+
+    // 倒计时
+    function countDown(num) {
+      var _getVfcodeDate = localStorage.getItem('getVfcodeDate')
+      if (!_getVfcodeDate) return
+      _timeRemaining = num;
+      var difTime = parseInt((Date.now() - _getVfcodeDate) / 1000)
+      if (difTime >= num) {
+        if (_btn.classList.contains('disabled')) {
+          _btn.classList.remove('disabled');
+        }
+        localStorage.removeItem('getVfcodeDate');
+        clearTimeout(_timer);
+      } else {
+        if (!_btn.classList.contains('disabled')) {
+          _btn.classList.add('disabled')
+        }
+        _timeRemaining = num - difTime;
+        _num.innerHTML = _timeRemaining;
+        _timer = setTimeout(() => {
+          countDown(num);
+        }, 1000)
+      }
+    };
+
+    countDown(10);
+    _btn.addEventListener('click', function () {
+      if (_btn.classList.contains('disabled')) return
+      startCountDown(10);
+    });
+  </script>
+</body>
+</html>
