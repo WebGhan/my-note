@@ -27,6 +27,7 @@
 
     // 开始倒计时
     function startCountDown(num) {
+      if (_btn.classList.contains('disabled')) return
       localStorage.setItem('getVfcodeDate', Date.now())
       countDown(num);
     }
@@ -58,7 +59,6 @@
     // 启动倒计时
     countDown(10);
     _btn.addEventListener('click', function () {
-      if (_btn.classList.contains('disabled')) return
       startCountDown(10);
     });
   </script>
