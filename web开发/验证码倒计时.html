@@ -20,47 +20,48 @@
   </div>
 
   <script>
-    var _btn = document.getElementById('btn');
-    var _num = document.getElementById('num');
-    var _timer = null; // 定时器
-    var _timeRemaining = null; // 剩余时间
+    function VfCodeCountDown(btn, num, totalTime) {
+      var _btn = document.getElementById(btn);
+      var _num = document.getElementById(num);
+      var _timer = null; // 定时器
+      var _timeRemaining = null; // 剩余时间
+      if (!_btn || !_num || !totalTime) return;
 
-    // 开始倒计时
-    function startCountDown(num) {
-      if (_btn.classList.contains('disabled')) return
-      localStorage.setItem('getVfcodeDate', Date.now())
-      countDown(num);
+      // 开始倒计时
+      function startCountDown() {
+        if (_btn.classList.contains('disabled')) return;
+        localStorage.setItem('getVfcodeDate', Date.now());
+        countDown();
+      }
+
+      // 倒计时
+      function countDown() {
+        var _getVfcodeDate = localStorage.getItem('getVfcodeDate');
+        if (!_getVfcodeDate) return;
+        _timeRemaining = totalTime;
+        var difTime = parseInt((Date.now() - _getVfcodeDate) / 1000);
+        if (difTime >= totalTime) {
+          _btn.classList.remove('disabled');
+          localStorage.removeItem('getVfcodeDate');
+          clearTimeout(_timer);
+        } else {
+          _timeRemaining = totalTime - difTime;
+          _num.innerHTML = _timeRemaining;
+          _btn.classList.add('disabled')
+          _timer = setTimeout(() => {
+            countDown();
+          }, 1000)
+        }
+      };
+
+      // 启动倒计时
+      countDown();
+      _btn.addEventListener('click', function () {
+        startCountDown();
+      });
     }
 
-    // 倒计时
-    function countDown(num) {
-      var _getVfcodeDate = localStorage.getItem('getVfcodeDate')
-      if (!_getVfcodeDate) return
-      _timeRemaining = num;
-      var difTime = parseInt((Date.now() - _getVfcodeDate) / 1000)
-      if (difTime >= num) {
-        if (_btn.classList.contains('disabled')) {
-          _btn.classList.remove('disabled');
-        }
-        localStorage.removeItem('getVfcodeDate');
-        clearTimeout(_timer);
-      } else {
-        _timeRemaining = num - difTime;
-        _num.innerHTML = _timeRemaining;
-        if (!_btn.classList.contains('disabled')) {
-          _btn.classList.add('disabled')
-        }
-        _timer = setTimeout(() => {
-          countDown(num);
-        }, 1000)
-      }
-    };
-
-    // 启动倒计时
-    countDown(10);
-    _btn.addEventListener('click', function () {
-      startCountDown(10);
-    });
+    VfCodeCountDown('btn', 'num', 10)
   </script>
 </body>
 </html>
