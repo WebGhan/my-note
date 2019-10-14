@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>返回顶部</title>
+  <style>
+    #backtop { position: fixed; left: 30px; bottom: 30px; }
+  </style>
 </head>
 <body>
   <div style="height: 10000px;"></div>
@@ -17,13 +20,13 @@
       if (!_btn) return
       _btn.addEventListener('click', function() {
         var _currentScroll = window.scrollY;
-        var _offset = _currentScroll / 20;
+        var _offset = _currentScroll / 15;
         function scrollToTop() {
           var _pos = window.scrollY;
           if ( _pos > 0 ) {
             window.scroll(0, _pos - _offset);
-            setTimeout(scrollToTop, 20)
-            // window.requestAnimationFrame(scrollToTop);
+            // setTimeout(scrollToTop, 20)
+            window.requestAnimationFrame(scrollToTop);
           }
         };
         scrollToTop();
