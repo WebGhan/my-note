@@ -23,9 +23,9 @@
     function VfCodeCountDown(btn, numBox, totalTime) {
       var _btn = document.getElementById(btn);
       var _numBox = document.getElementById(numBox);
+      if (!_btn || !_numBox || !totalTime) return;
       var _timer = null; // 定时器
       var _timeRemaining = null; // 剩余时间
-      if (!_btn || !_numBox || !totalTime) return;
 
       // 开始倒计时
       function startCountDown() {
