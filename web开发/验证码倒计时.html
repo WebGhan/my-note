@@ -16,16 +16,16 @@
 <body>
   <div id="btn">
     <span class="sp1">点我倒计时</span>
-    <span class="sp2" id="num">10</span><span class="sp2">s后再试</span>
+    <span class="sp2" id="num-box">10</span><span class="sp2">s后再试</span>
   </div>
 
   <script>
-    function VfCodeCountDown(btn, num, totalTime) {
+    function VfCodeCountDown(btn, numBox, totalTime) {
       var _btn = document.getElementById(btn);
-      var _num = document.getElementById(num);
+      var _numBox = document.getElementById(numBox);
       var _timer = null; // 定时器
       var _timeRemaining = null; // 剩余时间
-      if (!_btn || !_num || !totalTime) return;
+      if (!_btn || !_numBox || !totalTime) return;
 
       // 开始倒计时
       function startCountDown() {
@@ -38,7 +38,6 @@
       function countDown() {
         var _getVfcodeDate = localStorage.getItem('getVfcodeDate');
         if (!_getVfcodeDate) return;
-        _timeRemaining = totalTime;
         var difTime = parseInt((Date.now() - _getVfcodeDate) / 1000);
         if (difTime >= totalTime) {
           _btn.classList.remove('disabled');
@@ -46,7 +45,7 @@
           clearTimeout(_timer);
         } else {
           _timeRemaining = totalTime - difTime;
-          _num.innerHTML = _timeRemaining;
+          _numBox.innerHTML = _timeRemaining;
           _btn.classList.add('disabled')
           _timer = setTimeout(() => {
             countDown();
@@ -61,7 +60,7 @@
       });
     }
 
-    VfCodeCountDown('btn', 'num', 10)
+    VfCodeCountDown('btn', 'num-box', 10)
   </script>
 </body>
 </html>

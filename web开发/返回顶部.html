@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>返回顶部</title>
   <style>
-    #backtop { position: fixed; left: 30px; bottom: 30px; }
+    #backtop { display: none; position: fixed; left: 30px; bottom: 30px; }
   </style>
 </head>
 <body>
@@ -17,7 +17,9 @@
     // 返回顶部
     function backTop(btn) {
       var _btn = document.getElementById(btn);
-      if (!_btn) return
+      var scrollTimeout = null;
+      if (!_btn) return;
+
       _btn.addEventListener('click', function() {
         var _currentScroll = window.scrollY;
         var _offset = _currentScroll / 15;
@@ -25,11 +27,23 @@
           var _pos = window.scrollY;
           if ( _pos > 0 ) {
             window.scroll(0, _pos - _offset);
-            // setTimeout(scrollToTop, 20)
+            // setTimeout(scrollToTop, 20);
             window.requestAnimationFrame(scrollToTop);
           }
         };
         scrollToTop();
+      })
+
+      window.addEventListener('scroll', function() {
+        if (scrollTimeout) return;
+        scrollTimeout = setTimeout(function () {
+          if (window.scrollY > window.innerHeight) {
+            _btn.style.display = 'block';
+          } else {
+            _btn.style.display = 'none';
+          }
+          scrollTimeout = null;
+        }, 100);
       })
     }
 
