@@ -102,7 +102,7 @@
           this.style.transition = '0.3s ease transform';
           var deltaT = new Date().getTime() - startT;
           var deltaX = touch.pageX - startX;
-          if (deltaT < (maxWidth / 2) && Math.abs(deltaX) > (maxWidth / 5)) {
+          if (deltaT < (maxWidth / 2) && Math.abs(deltaX) > (maxWidth / 6)) {
             if (direction === 'left') {
               item.translateX = -maxWidth;
               this.initialPos = -maxWidth;
