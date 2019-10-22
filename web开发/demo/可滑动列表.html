@@ -56,14 +56,15 @@
         var startX = 0;
         var startY = 0;
         var startT = 0;
-        var initialPos = 0;
-        var translateX = 0;
+        // var initialPos = 0;
+        // var translateX = 0;
         var direction = '';
-        // var maxWidth = window.screen.width;
         var maxWidth = 150;
+        item.initialPos = 0
+        item.translateX = 0
 
         item.addEventListener('touchstart', function(e) {
-          // reset(index)
+          reset(index)
           // e.preventDefault();
           var touch = e.touches[0];
           this.style.transition = '';
@@ -82,17 +83,17 @@
             startY = touch.pageY
             return
           }
-          translateX = initialPos + deltaX;
+          item.translateX = this.initialPos + deltaX;
           direction = deltaX > 0 ? 'right' : 'left';
-          if (translateX > 0) {
-            // translateX = translateX / 3;
-            translateX = 0
+          if (item.translateX > 0) {
+            // item.translateX = item.translateX / 3;
+            item.translateX = 0
           }
-          if (translateX < -maxWidth) {
-            // translateX = (translateX + maxWidth) / 3 - maxWidth;
-            translateX = -maxWidth
+          if (item.translateX < -maxWidth) {
+            // item.translateX = (item.translateX + maxWidth) / 3 - maxWidth;
+            item.translateX = -maxWidth
           }
-          this.style.transform = 'translate3d(' + translateX + 'px, 0, 0)';
+          this.style.transform = 'translate3d(' + item.translateX + 'px, 0, 0)';
         }, false);
 
         item.addEventListener('touchend', function(e) {
@@ -103,31 +104,33 @@
           var deltaX = touch.pageX - startX;
           if (deltaT < (maxWidth / 2) && Math.abs(deltaX) > (maxWidth / 5)) {
             if (direction === 'left') {
-              translateX = -maxWidth;
-              initialPos = -maxWidth;
+              item.translateX = -maxWidth;
+              this.initialPos = -maxWidth;
             } else {
-              translateX = 0;
-              initialPos = 0;
+              item.translateX = 0;
+              this.initialPos = 0;
             }
           } else {
-            if (translateX < -maxWidth / 2) {
-              translateX = -maxWidth;
-              initialPos = -maxWidth;
+            if (item.translateX < -maxWidth / 2) {
+              item.translateX = -maxWidth;
+              this.initialPos = -maxWidth;
             } else {
-              translateX = 0;
-              initialPos = 0;
+              item.translateX = 0;
+              this.initialPos = 0;
             }
           }
-          this.style.transform = 'translate3d(' + translateX + 'px, 0, 0)';
+          this.style.transform = 'translate3d(' + item.translateX + 'px, 0, 0)';
         }, false);
 
-        // function reset(index) {
-        //   for (var n = 0; n < viewport.length; n++) {
-        //     if (n !== index) {
-        //       viewport[n].style.transform = 'translate3d(0, 0, 0)';
-        //     }
-        //   }
-        // }
+        function reset(index) {
+          for (var n = 0; n < viewport.length; n++) {
+            if (n !== index) {
+              viewport[n].initialPos = 0
+              viewport[n].translateX = 0
+              viewport[n].style.transform = 'translate3d(0, 0, 0)';
+            }
+          }
+        }
       }
     }
 
