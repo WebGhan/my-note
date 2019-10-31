@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Css loading</title>
+  <style>
+    .loading1, .loading2, .loading3 { margin: 40px auto; }
+  </style>
+</head>
+
+<body>
+  <!-- loading1 -->
+  <style>
+    .loading1, .loading1:before, .loading1:after { border-radius: 50%; }
+    .loading1 { position: relative; width: 40px; height: 40px; background: #fff; box-shadow: inset 0 0 0 2px #0dc5c1; }
+    .loading1::before, .loading1::after { content: ''; position: absolute; top: -2px; left: -1px; width: 22px; height: 44px; background: #fff; border-radius: 22px 0 0 22px; transform-origin: center right; animation: load1 1.2s infinite cubic-bezier(0.29, 0.68, 0.76, 0.36); }
+    .loading1::after { transform: rotate(220deg); animation-name: load2; animation-delay: 0.4s; }
+    @keyframes load1 {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes load2 {
+      0% { transform: rotate(220deg); }
+      100% { transform: rotate(580deg); }
+    }
+  </style>
+  <div class="loading1"></div>
+
+  <!-- loading2 -->
+  <style>
+    .loading2 { position: relative; width: 36px; height: 36px; border: 2px solid #eee; border-top-color: #0dc5c1; border-radius: 50%; animation: loading2 1s infinite cubic-bezier(0.4, 0.1, 0.4, 0.8); }
+    @keyframes loading2 {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  <div class="loading2"></div>
+
+  <!-- loading3 -->
+  <style>
+    .loading3 { position: relative; width: 40px; }
+    .loading3:before { content: ''; display: block; padding-top: 100%; }
+    .circular { animation: rotate 2s linear infinite; height: 100%; transform-origin: center center; width: 100%; position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto; }
+    .path { stroke-dasharray: 1, 200; stroke-dashoffset: 0; animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite; stroke-linecap: round; }
+    .ani_opa, .ani_opa_hide { -webkit-animation-duration: .2s; -webkit-animation-timing-function: ease-in-out; -webkit-animation-fill-mode: both; }
+    @keyframes rotate {
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes dash {
+      0% { stroke-dasharray: 1, 200; stroke-dashoffset: 0; }
+      50% { stroke-dasharray: 89, 200; stroke-dashoffset: -35; }
+      100% { stroke-dasharray: 89, 200; stroke-dashoffset: -124; }
+    }
+    @keyframes color {
+      0%, 100% { stroke: #d62d20; }
+      40% { stroke: #0057e7; }
+      66% { stroke: #008744; }
+      80%, 90% { stroke: #ffa700; }
+    }
+  </style>
+  <div class="loading3">
+    <svg class="circular" viewBox="25 25 50 50">
+      <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10"></circle>
+    </svg>
+  </div>
+</body>
+</html>

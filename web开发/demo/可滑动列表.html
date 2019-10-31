@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>slider</title>
+  <title>可滑动列表</title>
   <style>
     body, div, p { margin: 0; }
     .wrapper { display: block; position: relative; margin-bottom: 10px; width: 100%; overflow: hidden; }
     .viewport { display: flex; }
-    .pageview { flex-shrink: 0; width: 100%; height: 100px; }
-    .title { text-align: center; line-height: 100px; color: #fff; user-select: none; }
+    .pageview { flex-shrink: 0; width: 100%; height: 90px; }
+    .title { text-align: center; line-height: 90px; color: #fff; user-select: none; }
   </style>
 </head>
 <body>
@@ -99,7 +99,7 @@
         item.addEventListener('touchend', function(e) {
           // e.preventDefault();
           var touch = e.changedTouches[0];
-          this.style.transition = '0.3s ease transform';
+          this.style.transition = '0.2s ease transform';
           var deltaT = new Date().getTime() - startT;
           var deltaX = touch.pageX - startX;
           if (deltaT < (maxWidth / 2) && Math.abs(deltaX) > (maxWidth / 6)) {
