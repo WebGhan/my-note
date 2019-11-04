@@ -5,95 +5,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>触屏商品分类</title>
-  <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
-  <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
   <style>
     body, div { margin: 0; font-size: 14px; word-wrap: break-word; }
-    .tab-group { width: 85px; height: 100vh; background: #f5f5f5; border-right: 1px solid #f5f5f5; }
-    .tab-group .swiper-container { height: 100vh; }
-    .tab-group .swiper-slide { height: auto; }
+    .tab-group { width: 100px; height: 100vh; background: #f5f5f5; overflow-y: auto; scrollbar-width: 0; }
+    .tab-group::-webkit-scrollbar { display: none; }
     .tab-group .tab { height: 46px; line-height: 46px; text-align: center; }
     .tab-group .tab.active { background: #fff; }
   </style>
 </head>
 <body>
-  <div class="tab-group">
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div class="tab">tab1</div>
-        </div>
-        <div class="swiper-slide">
-          <div class="tab">tab2</div>
-        </div>
-        <div class="swiper-slide">
-          <div class="tab">tab3</div>
-        </div>
-        <div class="swiper-slide">
-          <div class="tab">tab4</div>
-        </div>
-        <div class="swiper-slide">
-          <div class="tab">tab5</div>
-        </div>
-        <div class="swiper-slide">
-          <div class="tab">tab6</div>
-        </div>
-        <div class="swiper-slide">
-          <div class="tab">tab7</div>
-        </div>
-        <div class="swiper-slide">
-          <div class="tab">tab8</div>
-        </div>
-        <div class="swiper-slide">
-          <div class="tab">tab9</div>
-        </div>
-        <div class="swiper-slide">
-          <div class="tab">tab10</div>
-        </div>
-        <div class="swiper-slide">
-          <div class="tab">tab11</div>
-        </div>
-        <div class="swiper-slide">
-          <div class="tab">tab12</div>
-        </div>
-        <div class="swiper-slide">
-          <div class="tab">tab13</div>
-        </div>
-        <div class="swiper-slide">
-          <div class="tab">tab14</div>
-        </div>
-        <div class="swiper-slide">
-          <div class="tab">tab15</div>
-        </div>
-        <div class="swiper-slide">
-          <div class="tab">tab16</div>
-        </div>
-        <div class="swiper-slide">
-          <div class="tab">tab17</div>
-        </div>
-        <div class="swiper-slide">
-          <div class="tab">tab18</div>
-        </div>
-      </div>
-    </div>
+  <div id="tabgroup" class="tab-group">
+    <div class="tab active">tab1</div>
+    <div class="tab">tab2</div>
+    <div class="tab">tab3</div>
+    <div class="tab">tab4</div>
+    <div class="tab">tab5</div>
+    <div class="tab">tab6</div>
+    <div class="tab">tab7</div>
+    <div class="tab">tab8</div>
+    <div class="tab">tab9</div>
+    <div class="tab">tab10</div>
+    <div class="tab">tab11</div>
+    <div class="tab">tab12</div>
+    <div class="tab">tab13</div>
+    <div class="tab">tab14</div>
+    <div class="tab">tab15</div>
+    <div class="tab">tab16</div>
+    <div class="tab">tab17</div>
+    <div class="tab">tab18</div>
+    <div class="tab">tab19</div>
   </div>
   <script>
-    var mySwiper = new Swiper ('.swiper-container', {
-      direction: 'vertical',
-      slidesPerView: 'auto',
-      spaceBetween: 0,
-      slideToClickedSlide: true,
-    })
+    (function tabGroup() {
+      var _tabGroup = document.getElementById('tabgroup')
+      if (!_tabGroup) return
+      var _tabs = _tabGroup.getElementsByClassName('tab')
+      if (!_tabs) return
+      var animationId = null
 
-    var _tab = document.getElementsByClassName('tab')
-    for (var i = 0; i < _tab.length; i++) {
-      _tab[i].addEventListener('click', function() {
-        for (var n = 0; n < _tab.length; n++) {
-          _tab[n].classList.remove('active')
+      for (var i = 0; i < _tabs.length; i++) {
+        addTabsListener(_tabs[i], i)
+      }
+
+      function addTabsListener(item, index) {
+        item.addEventListener('click', function() {
+          window.cancelAnimationFrame(animationId)
+          var targetScroll = this.offsetTop - (_tabGroup.offsetHeight / 2) + (this.offsetHeight / 2)
+          var _offset = (targetScroll - _tabGroup.scrollTop) / 15
+          function scrollToTop() {
+            _tabGroup.scroll(0, _tabGroup.scrollTop + _offset);
+            if ( _tabGroup.scrollTop > 0 && _tabGroup.scrollTop < (_tabGroup.scrollHeight - _tabGroup.offsetHeight) && Math.abs(targetScroll - _tabGroup.scrollTop) > Math.abs(_offset)) {
+              animationId = window.requestAnimationFrame(scrollToTop);
+            }
+          };
+          scrollToTop()
+
+          changeCurTab(index)
+        })
+      }
+
+      function changeCurTab(index) {
+        for (var n = 0; n < _tabs.length; n++) {
+          if (n === index) {
+            _tabs[n].classList.add('active')
+          } else {
+            _tabs[n].classList.remove('active')
+          }
         }
-        this.classList.add('active')
-      })
-    }
+      }
+    })()
   </script>
 </body>
 </html>
