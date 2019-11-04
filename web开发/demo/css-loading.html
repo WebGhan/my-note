@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,12 +32,8 @@
   <style>
     .loading2 { width: 36px; height: 36px; border: 2px solid #eee; border-top-color: #0dc5c1; border-radius: 50%; animation: loading2 1s infinite cubic-bezier(0.4, 0.1, 0.4, 0.8); }
     @keyframes loading2 {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
   </style>
   <div class="loading2"></div>
@@ -46,10 +41,9 @@
   <!-- loading3 -->
   <style>
     .loading3 { position: relative; width: 40px; }
-    .loading3:before { content: ''; display: block; padding-top: 100%; }
-    .circular { animation: rotate 2s linear infinite; height: 100%; transform-origin: center center; width: 100%; position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto; }
-    .path { stroke-dasharray: 1, 200; stroke-dashoffset: 0; animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite; stroke-linecap: round; }
-    .ani_opa, .ani_opa_hide { animation-duration: .2s; animation-timing-function: ease-in-out; animation-fill-mode: both; }
+    .loading3::before { content: ''; display: block; padding-top: 100%; }
+    .loading3 .circular { animation: rotate 2s linear infinite; height: 100%; transform-origin: center center; width: 100%; position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto; }
+    .loading3 .path { stroke-dasharray: 1, 200; stroke-dashoffset: 0; animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite; stroke-linecap: round; }
     @keyframes rotate {
       100% { transform: rotate(360deg); }
     }
