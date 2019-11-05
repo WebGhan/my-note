@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>剩余时间</title>
+</head>
+<body>
+  <div>
+    剩余时间：<span id="box1"></span>
+  </div>
+  
+  <script>
+    // 计算剩多少时间
+    function dateDiff(targetDate) {
+      var leftTime = parseInt(targetDate, 10) - new Date().getTime() // 时间差的毫秒数
+      if (leftTime > 0) {
+        // 计算出相差天数
+        var days = Math.floor(leftTime / (24 * 3600 * 1000))
+        // 计算出小时数
+        var time1 = leftTime % (24 * 3600 * 1000) // 计算天数后剩余的毫秒数
+        var hours = Math.floor(time1 / (3600 * 1000))
+        // 计算相差分钟数
+        var time2 = time1 % (3600 * 1000) // 计算小时数后剩余的毫秒数
+        var minutes = Math.floor(time2 / (60 * 1000))
+        // 计算相差秒数
+        var time3 = time2 % (60 * 1000) // 计算分钟数后剩余的毫秒数
+        var seconds = Math.round(time3 / 1000)
+
+        days = format(days)
+        hours = format(hours)
+        minutes = format(minutes)
+        seconds = format(seconds)
+
+        return { days, hours, minutes, seconds }
+      } else {
+        return false
+      }
+
+      function format(value) {
+        if (value < 10) {
+          return '0' + value
+        } else {
+          return value
+        }
+      }
+    }
+
+    // 显示剩余时间
+    var _box = document.getElementById('box1')
+
+    function timeLimit() {
+      var _time = dateDiff(1873940057412)
+      _box.innerHTML = `${_time.days || '00'}天${_time.hours || '00'}小时${_time.minutes || '00'}分${_time.seconds || '00'}秒`
+      if (_time) {
+        setTimeout(function() {
+          timeLimit()
+        }, 1000)
+      } else {
+        _box.innerHTML = '已到期'
+      }
+    }
+    timeLimit()
+  </script>
+</body>
+</html>
