@@ -1,0 +1,56 @@
+.gh-datepicker-wrapper {
+  width: 240px;
+  font-size: 16px;
+  color: #333333;
+  box-shadow: 2px 2px 8px 2px rgba(128, 128, 128, 0.3);
+}
+
+.gh-datepicker-wrapper .gh-datepicker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-weight: bold;
+  background: #f0f0f0;
+  border-bottom: 1px solid #cccccc;
+}
+
+.gh-datepicker-wrapper .gh-datepicker-btn {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  font-family: serif;
+  font-size: 20px;
+  color: #00a3ee;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.gh-datepicker-wrapper .gh-datepicker-body table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.gh-datepicker-wrapper .gh-datepicker-body th,
+.gh-datepicker-wrapper .gh-datepicker-body td {
+    height: 30px;
+    text-align: center;
+    font-size: 14px;
+}
+.gh-datepicker-wrapper .gh-datepicker-body th {
+  height: 40px;
+  line-height: 40px;
+  font-size: 13px;
+}
+.gh-datepicker-wrapper .gh-datepicker-body td {
+  width: 14%;
+  border: 1px solid #f0f0f0;
+  cursor: pointer;
+}
+.gh-datepicker-wrapper .gh-datepicker-body .low {
+  color: #cccccc;
+}
