@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>删除数组的某项</title>
+</head>
+<body>
+  <script>
+    let oldArray = [1, 2, 3, 4, 5]
+    let target = 3
+
+    // 方法一 filter
+    // Chromium浏览器环境下，对filter做了优化，一些情况下filter性能更好
+    let newArray = oldArray.filter(item => item !== target)
+    console.log('newArray: ', newArray)
+
+    // 方法二 splice
+    oldArray.splice(oldArray.indexOf(target), 1)
+    console.log('oldArray: ', oldArray)
+
+    // 如果是对象数组，可用findIndex替代indexOf
+    let arr2 = [{a: 1}, {a: 2}, {a: 3}]
+    arr2.splice(arr2.findIndex(i => i.a === 2), 1)
+    console.log(arr2)
+  </script>
+</body>
+</html>
