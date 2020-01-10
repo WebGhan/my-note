@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="d1">
+    <!-- <div></div> -->
+    <p id="p1">item1</p>
+    <p id="p2">item2</p>
+    <p id="p3">item3</p>
+    <p id="p4">item4</p>
+    <p id="p5">item5</p>
+  </div>
+
+  <script>
+    let d1 = document.querySelector('#d1')
+
+    function DOMComb(parent, callback) {
+      callback(parent)
+      if (parent.hasChildNodes()) {
+        for (var node = parent.firstChild; node; node = node.nextSibling) {
+          DOMComb(node, callback)
+        }
+      }
+    }
+    DOMComb(document.body, console.log)
+  </script>
+</body>
+</html>
