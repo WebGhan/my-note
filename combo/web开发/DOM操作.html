@@ -19,6 +19,7 @@
   <script>
     let d1 = document.querySelector('#d1')
 
+    // 遍历所有子节点
     function DOMComb(parent, callback) {
       callback(parent)
       if (parent.hasChildNodes()) {
@@ -28,6 +29,19 @@
       }
     }
     DOMComb(document.body, console.log)
+
+
+    // 在节点后面插入节点
+    function insertAfter(newNode, referenceNode) {
+      referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
+    }
+
+    // 移除当前节点的所有子节点
+    function clearChild (el) {
+      while (el.firstChild) {
+        el.removeChild(el.firstChild)
+      }
+    }
   </script>
 </body>
 </html>
