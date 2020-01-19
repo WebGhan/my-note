@@ -1,4 +1,7 @@
-## `<rich-text>`图片宽度
+# rich-text相关
+
+## 覆盖图片样式
+
 ```javascript
 // 利用正则替换富文本图片样式
 const handleRichTextImg = (html) => {
