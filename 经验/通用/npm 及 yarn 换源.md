@@ -1,4 +1,4 @@
-# npm 及 yarn 修改源
+# npm 及 yarn 换源
 
 ## npm
 
