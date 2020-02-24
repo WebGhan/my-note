@@ -9,7 +9,7 @@ npm config get registry
 // 默认源 https://registry.npmjs.org
 ```
 
-2.设置成淘宝镜像 
+2.设置成淘宝镜像  
 ```
 npm config set registry https://registry.npm.taobao.org
 ```
