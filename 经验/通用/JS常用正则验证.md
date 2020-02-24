@@ -3,8 +3,8 @@
 ## JS手机号验证
 
 前端切忌过度验证，验证以下两点即可：
-- 1开头
-- 11位数
+- 数字"1"开头
+- 共11位数
 
 ```javascript
 const checkPhoneNumber = (str) => {
