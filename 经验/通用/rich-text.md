@@ -8,7 +8,7 @@ const handleRichTextImg = (html) => {
   if (typeof html !== 'string') {
     return ''
   }
-  let result = html.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/gi, function(match, capture){
+  let result = html.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/gi, function(match, capture) {
     return `<img src="${capture}" style="display: block; margin: 0 auto; width: 100%; height: auto;" />`
   })
   return result
