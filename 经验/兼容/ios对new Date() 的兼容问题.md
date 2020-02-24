@@ -4,7 +4,7 @@
 
 **利用正则替换格式**  
 ```javascript
-  const format = (str) => {
-    return str.replace(/-/g, '/')
-  }
+const format = (str) => {
+  return str.replace(/-/g, '/')
+}
 ```
