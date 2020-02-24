@@ -12,3 +12,10 @@ const checkPhoneNumber = (str) => {
   return pattern.test(str)
 }
 ```
+
+## 隐藏手机号中间位数
+
+```javascript
+const hidePhoneNumber = (str) => {
+  return str.replace(/^(\d{3})\d{4}(\d{4})$/, '$1****$2')
+}
