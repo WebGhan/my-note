@@ -3,14 +3,14 @@
 ## npm
 
 1.查询当前配置的镜像  
-```shell
+```bash
 npm config get registry
 
 // 默认源 https://registry.npmjs.org
 ```
 
 2.设置成淘宝镜像  
-```shell
+```bash
 npm config set registry https://registry.npm.taobao.org
 ```
 
@@ -19,12 +19,12 @@ npm config set registry https://registry.npm.taobao.org
 nrm(npm registry manager)是npm的镜像源管理工具，可通过nrm来切换镜像源
 
 1.安装nrm  
-```shell
+```bash
 npm install -g nrm
 ```
 
 2.查看可选的源  
-```shell
+```bash
 nrm ls
 
 // 结果如下
@@ -47,7 +47,7 @@ nrm ls
 ## yarn
 
 1.查询当前配置的镜像  
-```shell
+```bash
 yarn config get registry
 
 // 默认源 https://registry.yarnpkg.com
