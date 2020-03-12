@@ -35,8 +35,7 @@ const checkUserName = (_str, minLength, maxLength) => {
     let _en = _str.match(/\w*/g).join('').length
     let _length = _zh * 2 + _en
     return _length >= minLength && _length <= maxLength
-  } else {
-    return false
   }
+  return false
 }
 ```
