@@ -19,7 +19,7 @@ Java Virtual Machine (虚拟机)，一个虚构出来的计算机，用于将Jav
 Java compiler (编译器)
 
 **JRE**  
-Java Runtime Environment (运行环境)，包含JVM和Runtime Class Library (基础类库)  
+Java Runtime Environment (运行环境)，包含JVM和Runtime Class Library (核心类库)  
 
 **JDK**  
 Java Development Kit (开发工具包)，包含JRE、Compiler (编译器)、debugger (调试器) 等开发工具  
