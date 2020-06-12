@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>搜索关键词高亮</title>
+</head>
+<body>
+  <h4>内容</h4>
+  <div id="content">搜索123abc4567abc890搜索123结果abcdefg</div>
+  <br>
+  <div>
+    <input id="input" type="text">
+    <button onclick="handleSearch()">搜索</button>
+  </div>
+
+  <h4>结果：</h4>
+  <div id="result"></div>
+
+  <script>
+    function keywordsHighlight(data, keywords) {
+      let _keywords = keywords.trim();
+      if (_keywords.length < 1) return data; 
+      let reg = new RegExp(_keywords, 'g')
+      return data.replace(reg, '<span style="color: #ff2d20;">$&</span>')
+    }
+    
+    function handleSearch() {
+      let content = document.querySelector('#content').innerText
+      let keywords = document.querySelector('#input').value
+      let result = keywordsHighlight(content, keywords)
+      console.log(result)
+      document.querySelector('#result').innerHTML = result
+    }
+  </script>
+</body>
+</html>
