@@ -4,13 +4,13 @@
 
 ## 手机号验证
 
-忌过度验证，验证以下两点即可：
+切忌过度验证，验证以下两点即可：
 - 数字"1"开头
 - 共11位数
 
 ```javascript
 const checkPhoneNumber = (str) => {
-  let pattern = /^1\d{10}$/;
+  let pattern = /^1\d{10}$/
   return pattern.test(str)
 }
 ```
