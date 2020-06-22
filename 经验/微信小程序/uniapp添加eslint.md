@@ -3,6 +3,8 @@
 ## 安装依赖
 ```
 vue add eslint
+
+// 选择 standard
 ```
 
 ## .eslintrc.js 配置
