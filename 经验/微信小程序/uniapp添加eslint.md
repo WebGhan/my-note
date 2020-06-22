@@ -2,7 +2,7 @@
 
 ## 安装依赖
 ```
-npm install --save eslint eslint-plugin-vue eslint-plugin-html eslint-config-standard eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard
+vue add eslint
 ```
 
 ## .eslintrc.js 配置
