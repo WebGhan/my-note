@@ -76,7 +76,7 @@
           var touch = e.touches[0];
           var deltaX = touch.pageX - startX;
           var deltaY = touch.pageY - startY;
-          if (Math.abs(deltaX) < Math.abs(deltaY)) {
+          if (Math.abs(deltaX) < Math.abs(deltaY) * 2) {
             startX = touch.pageX
             startY = touch.pageY
             return
