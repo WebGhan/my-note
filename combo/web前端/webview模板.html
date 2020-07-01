@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webview</title>
+  <style>
+    body{font-family:unset;font-size:0.28rem;line-height:1.5;color:#333;font-family:unset;word-break:break-all;}
+    img{ display:block;margin:0 auto;width:100%;height:auto;}
+  </style>
+  <script>
+    (function setRootSize(size) {
+      var _doc = document.documentElement;
+      function setSize() {
+        _doc.style.fontSize = _doc.clientWidth * 100 / size + 'px';
+      }
+      setSize()
+      window.addEventListener('resize', function() {
+        setSize();
+      }, false)
+    })(750)
+  </script>
+</head>
+<body>
+  内容
+</body>
+</html>
