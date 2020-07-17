@@ -25,7 +25,7 @@ const hidePhoneNumber = (str) => {
 
 ## 用户名验证
 
-用户名由中文、英文、数字、下划线组成，用户名长度为4~12个字符，一个中文表示两个字符
+用户名由中文、英文、数字、下划线组成，一个中文表示两个字符
 
 ```javascript
 const checkUserName = (_str, minLength, maxLength) => {
