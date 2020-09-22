@@ -14,7 +14,7 @@
   <script>
     // 计算剩多少时间
     function dateDiff(targetDate) {
-      var leftTime = parseInt(targetDate, 10) - new Date().getTime() // 时间差的毫秒数
+      var leftTime = parseInt(targetDate, 10) - Date.now() // 时间差的毫秒数
       if (leftTime > 0) {
         // 计算出相差天数
         var days = Math.floor(leftTime / (24 * 3600 * 1000))
