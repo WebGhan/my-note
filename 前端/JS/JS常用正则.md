@@ -8,7 +8,7 @@
 - 数字"1"开头
 - 共11位数
 
-```javascript
+```js
 const checkPhoneNumber = (str) => {
   let pattern = /^1\d{10}$/
   return pattern.test(str)
@@ -17,7 +17,7 @@ const checkPhoneNumber = (str) => {
 
 ## 隐藏手机号中间位数
 
-```javascript
+```js
 const hidePhoneNumber = (str) => {
   return str.replace(/^(\d{3})\d{4}(\d{4})$/, '$1****$2')
 }
@@ -27,7 +27,7 @@ const hidePhoneNumber = (str) => {
 
 用户名由中文、英文、数字、下划线组成，一个中文表示两个字符
 
-```javascript
+```js
 const checkUserName = (_str, minLength, maxLength) => {
   let _fomat = /^[\w\u4e00-\u9fa5]+$/.test(_str)
   if (_fomat) {

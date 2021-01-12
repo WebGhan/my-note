@@ -1,6 +1,6 @@
 # canvas 文本换行
 
-```javascript
+```js
 // 处理文本换行
 function renderText(x, y, maxWidth, lineHeight, text) {
   let _arrText = text.split('')
