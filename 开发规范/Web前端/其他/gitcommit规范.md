@@ -1,6 +1,6 @@
 ### commit message格式
 ```
-<type>: <subject>
+<type>(<scope>): <subject>
 ```
 
 
@@ -34,6 +34,11 @@ merge：代码合并。
 sync：同步主线或分支的Bug。
 
 
+### scope(可选)
+
+scope用于说明 commit 影响的范围，比如数据层、控制层、视图层等等，视项目不同而不同。
+
+
 ### subject(必须)
 
 subject 是 commit 目的的简短描述，不超过 50 个字符。
@@ -54,6 +59,6 @@ feat: 用户查询接口开发
 
 示例：
 ```
-fix: #3260 用户查询缺少username属性
+fix(user): #3260 用户查询缺少username属性
 feat: #3120 用户查询接口开发
 ```
